@@ -14,6 +14,7 @@ import static org.hamcrest.Matchers.*;
 import static org.testng.Assert.assertEquals;
 
 import io.restassured.response.Response;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /*
  *  POST
@@ -86,6 +87,9 @@ public class CrudExamples {
 		
 		//testNG assert
 		assertEquals(id, response.jsonPath().getString("_id"));
+		
+		//hamcrest assert --> e recomandat pentru RestAssure, nu in testNG
+		assertThat(id, is(equalTo(response.jsonPath().getString("_id"))));
 		
 	}
 	
