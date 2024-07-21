@@ -1,0 +1,95 @@
+package tests;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotEquals;
+
+import org.testng.annotations.Test;
+import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertThat;
+
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import static org.hamcrest.Matchers.*;
+
+public class HamcrestExample {
+	
+	@Test
+	public void hamcrestTest() {
+		
+		Response response = given().get("https://swapi.dev/api/planets/1/").then().extract().response();
+		System.out.println(response.asPrettyString());
+		
+		
+		
+		JsonPath json = response.jsonPath();
+		//response.jsonPath().getString("name");
+		
+		
+		String name = json.getString("name");
+		System.out.println(name);
+		
+		//testNG
+		assertEquals(name, "Tatooine");
+		
+		//Hamcrest
+		assertThat(name, equalTo("Tatooine"));
+		assertThat(name, is("Tatooine")); //is(T value)
+		assertThat(name, is(equalTo("Tatooine"))); //is(Matcher<T>)  --> aceasta e varianta recomandata, e mai readability
+		
+		//TestNG
+		assertNotEquals(name, "Mars");
+		
+		//hamcrest
+		assertThat(name, is(not("Mars")));
+		assertThat(name, is(not(equalTo("Mars"))));
+		assertThat(name, is(not(instanceOf(Integer.class))));
+		
+		assertThat(name, is(instanceOf(String.class)));
+		
+		assertThat(name, is(notNullValue()));
+		
+		String text= "";
+		String text2= null;
+		
+		System.out.println("Lenghtul lui text :" +text.length());
+		//assertThat(text, is(emptyOrNullString()));
+		//assertThat(text, is(emptyString()));
+		//assertThat(text, isEmptyString());
+		assertThat(text2, is(nullValue()));
+		
+		String name2 = "  Tatooine  ";
+		assertThat(name, is(equalToCompressingWhiteSpace(name2)));
+		
+
+		//startsWith -- endsWith
+		assertThat(name, startsWith("Tat"));
+		assertThat(name, endsWith("ine"));
+		System.out.println(response.asString());
+		assertThat(response.asString(), startsWith("{\"name\":\"Tatooine\",\"rotation"));
+		assertThat(response.asString(), startsWithIgnoringCase("{\"NAME\":\"TATOOINE\",\"rotation"));
+		assertThat(response.asString(), endsWith("dev/api/planets/1/\"}"));
+		assertThat(response.asString(), endsWithIgnoringCase("dEv/ApI/pLaNeTs/1/\"}"));
+
+		String url = json.getString("url");
+		//anyOf
+		//assertThat(url, anyOf(startsWith("https"), containsString("123")));
+		//allOf
+		assertThat(url, allOf(startsWith("https"), containsString("swapi"), endsWith("/1/")));
+
+		//pattern
+		assertThat(name, matchesPattern("[a-zA-Z]+"));
+		String gravity = json.getString("gravity");
+		assertThat(gravity, matchesPattern("[a-zA-Z 0-9]+"));
+		String diameter = json.getString("diameter");
+		assertThat(diameter, matchesPattern("[0-9]+"));
+
+		//and
+		assertThat(response.asString(), both(containsString("terrain")).and(containsString("population")));
+		//or
+		assertThat(name, either(is("Tatooine")).or(is("Mars")).or(is("Terra")) );
+		assertThat(response.asString(), either(containsString("abc")).or(containsString("population")));
+
+		
+	}
+
+}

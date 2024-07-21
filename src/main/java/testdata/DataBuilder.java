@@ -20,4 +20,17 @@ public class DataBuilder {
 		return bodyBuilder;
 	}
 
+	@SuppressWarnings("unchecked")
+	public static JSONObject buildUpdatedUser() {
+		
+		JSONObject bodyBuilder = new JSONObject();
+		Faker fake = new Faker();
+		
+		bodyBuilder.put("name", fake.name().fullName());
+		bodyBuilder.put("email", fake.internet().emailAddress());
+		bodyBuilder.put("age", fake.number().numberBetween(5,130));
+		bodyBuilder.put("gender", "m");
+		
+		return bodyBuilder;
+	}
 }
