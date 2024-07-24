@@ -1,0 +1,21 @@
+[{
+"name":"Degas1",
+"email":"11423quyen.koss@gmail.com",
+ "age": 45,
+ "gender": "m"
+},
+
+{
+"name":"Degas2",
+"email":"15123quyen.koss@gmail.com",
+ "age": 45,
+ "gender": "m"
+},
+
+{
+"name":"Degas3",
+"email":"16123quyen.koss@gmail.com",
+ "age": 45,
+ "gender": "m"
+}
+]

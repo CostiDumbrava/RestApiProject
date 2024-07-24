@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-07-21T17:38:31 OESZ" name="Default suite" finished-at="2024-07-21T17:38:33 OESZ" duration-ms="2106">
+  <suite started-at="2024-07-24T18:44:09 OESZ" name="Default suite" finished-at="2024-07-24T18:44:11 OESZ" duration-ms="1861">
     <groups>
     </groups>
-    <test started-at="2024-07-21T17:38:31 OESZ" name="Default test" finished-at="2024-07-21T17:38:33 OESZ" duration-ms="2106">
+    <test started-at="2024-07-24T18:44:09 OESZ" name="Default test" finished-at="2024-07-24T18:44:11 OESZ" duration-ms="1861">
       <class name="tests.HamcrestExample">
-        <test-method signature="hamcrestTest()[pri:0, instance:tests.HamcrestExample@66d3eec0]" started-at="2024-07-21T17:38:31 OESZ" name="hamcrestTest" finished-at="2024-07-21T17:38:33 OESZ" duration-ms="2082" status="PASS">
+        <test-method signature="hamcrestTest()[pri:0, instance:tests.HamcrestExample@66d3eec0]" started-at="2024-07-24T18:44:09 OESZ" name="hamcrestTest" finished-at="2024-07-24T18:44:11 OESZ" duration-ms="1839" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- hamcrestTest -->
