@@ -16,25 +16,21 @@ import java.io.IOException;
 
 
 public class ParseJson {
-	
+
 	@Test
 	public void parseJson() throws IOException, ParseException {
-		
-		//1. parser de json
+		//1.parser de json
 		JSONParser parserObj = new JSONParser();
-		
-		//2. incarcam fisierul
-		FileReader reader = new FileReader("data3.json");
-		
-		//3 parsereul primeste fisierul
+		//2. incarcam fisierul json
+		FileReader reader =  new FileReader("data3.json");
+		//3 parserul primeste fisierul
 		Object obj = parserObj.parse(reader);
-		
 		//4 punem continutul intr-un json array
 		JSONArray employeeList = (JSONArray) obj;
 		System.out.println(employeeList);
-		
-		//5 cititm un JsonObject din JSONArray
+		//5 citim un JsonObject din Json Array
 		JSONObject employeeObject = (JSONObject) employeeList.get(0);
+		System.out.println(employeeObject);
 		
 		String employeeAttributeDate = (String) employeeObject.get("date");
 		System.out.println(employeeAttributeDate);
@@ -44,19 +40,17 @@ public class ParseJson {
 		
 		System.out.println(employeeAttribute.get("company"));
 		System.out.println(employeeAttribute.get("firstName"));
+
+		System.out.println("---------------------------------------------");
 		
-		System.out.println("---------------------------------");
-		
-		File jsonFile = new File ("data3.json");
+		File jsonFile = new File("data3.json");
 		JsonPath jsonPath = JsonPath.from(jsonFile);
+		
 		
 		System.out.println(jsonPath.getString("[0]"));
 		System.out.println(jsonPath.getString("[0].employee.company"));
 		
-		
-		
-		
-		
 	}
-
+	
+	
 }
