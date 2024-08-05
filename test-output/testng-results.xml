@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-07-31T21:23:44 OESZ" name="Default suite" finished-at="2024-07-31T21:23:46 OESZ" duration-ms="2134">
+  <suite started-at="2024-08-05T21:23:18 OESZ" name="Default suite" finished-at="2024-08-05T21:23:20 OESZ" duration-ms="2170">
     <groups>
     </groups>
-    <test started-at="2024-07-31T21:23:44 OESZ" name="Default test" finished-at="2024-07-31T21:23:46 OESZ" duration-ms="2134">
-      <class name="tests.RestAssuredXmlExample">
-        <test-method signature="textXMLResponse()[pri:0, instance:tests.RestAssuredXmlExample@e15b7e8]" started-at="2024-07-31T21:23:44 OESZ" name="textXMLResponse" finished-at="2024-07-31T21:23:46 OESZ" duration-ms="2107" status="PASS">
+    <test started-at="2024-08-05T21:23:18 OESZ" name="Default test" finished-at="2024-08-05T21:23:20 OESZ" duration-ms="2170">
+      <class name="tests.TestRequestWithLombok">
+        <test-method signature="createBooking()[pri:0, instance:tests.TestRequestWithLombok@d5b810e]" started-at="2024-08-05T21:23:18 OESZ" name="createBooking" finished-at="2024-08-05T21:23:20 OESZ" duration-ms="2140" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- textXMLResponse -->
-      </class> <!-- tests.RestAssuredXmlExample -->
+        </test-method> <!-- createBooking -->
+      </class> <!-- tests.TestRequestWithLombok -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
