@@ -1,5 +1,9 @@
 package utils;
 
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.either;
+import static org.hamcrest.Matchers.is;
+
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
@@ -13,10 +17,7 @@ import io.restassured.specification.ResponseSpecification;
 import reportutils.ExtentManager;
 import testdata.DataBuilder;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
-
-public class BaseComponent2 {
+public class BaseComponent3 {
 	
 	String token;
 	public static RequestSpecification requestSpec;
@@ -65,57 +66,26 @@ public class BaseComponent2 {
 	}
 	
 	
-	public static Response doPostRequest(String path, String body) {
+	public static Response doRequest(String method, String param, String body) {
 		
-		Response response = given().
-				spec(requestSpec).
-				body(body).
-			when().	
-				post(path). 
-			then(). 
-				spec(responseSpec).
-				extract().response();
-			return response;
+		Response result = null;
 		
-	}
-	
-	public static Response doPatchRequest(String path, String body) {
+		switch(method.toUpperCase()) {
 		
-		Response response = given().
-				spec(requestSpec).
-				body(body).
-			when().	
-				patch(path). 
-			then(). 
-				spec(responseSpec).
-				extract().response();
-			return response;
+		case "GET" : result = given().spec(requestSpec).get(param);
+		break;
+		case "POST": result = given().spec(requestSpec).body(body).post(param);
+		break;
+		case "PATCH": result = given().spec(requestSpec).body(body).patch(param);
+		break;
+		case "DELETE": result = given().spec(requestSpec).body(body).delete(param);
+		
+		}
+		
+		if (result!=null)
+			result = result.then().spec(responseSpec).extract().response();
+		return result;
 		
 	}
-	
-	public static Response doGetRequest(String path) {
-		
-		Response response = given().
-				spec(requestSpec).
-				when().	
-				get(path). 
-			then(). 
-				spec(responseSpec).
-				extract().response();
-			return response;
-		
-	}
-	
-	public static Response doDeleteRequest(String path) {
-		
-		Response response = given().
-				spec(requestSpec).
-				when().	
-				delete(path). 
-			then(). 
-				spec(responseSpec).
-				extract().response();
-			return response;
 
-}
 }
